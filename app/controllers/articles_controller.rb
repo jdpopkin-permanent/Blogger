@@ -17,6 +17,8 @@ class ArticlesController < ApplicationController
     @article = Article.new()
     @article.title = params[:article][:title]
     @article.body = params[:article][:body]
+    #@article.tagging = params[:article][:tags]
+    @article.tag_list = params[:article][:tag_list]
     @article.save
 
     flash.notice = "Article #{@article.title} created!"
@@ -49,6 +51,6 @@ class ArticlesController < ApplicationController
   end
 
   def article_params # broken
-    params.require(:article).permit(:title, :body)
+    params.require(:article).permit(:title, :body, :tag_list)
   end
 end
